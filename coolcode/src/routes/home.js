@@ -1,10 +1,14 @@
-import { Link } from "react-router-dom"
+import { Link, Outlet } from "react-router-dom"
 import Row from "react-bootstrap/Row"
 import Card from 'react-bootstrap/Card';
 import Col from "react-bootstrap/Col"
 import Container from "react-bootstrap/Container"
 import Button from "react-bootstrap/Button"
-import
+import React from "react";
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import {LinkContainer} from "react-router-bootstrap"
+
 
 
 
@@ -40,112 +44,31 @@ class App extends React.Component {
             <h1> Pleses wait some time.... </h1> </div>;
 
         return (
-
-
-
-
-
-
             <Container>
+                <Navbar bg="light" expand="lg">
+                    <Container>
+                        <LinkContainer to="/"><Navbar.Brand>Fall Fashion Trends</Navbar.Brand></LinkContainer>
+                        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                        <Navbar.Collapse id="basic-navbar-nav">
+                            <Nav className="me-auto">
+                                <LinkContainer to="/"><Nav.Link>Home</Nav.Link></LinkContainer>
+                                <LinkContainer to="/about"><Nav.Link>About</Nav.Link></LinkContainer>
+                                <LinkContainer to="/results"><Nav.Link>Results</Nav.Link></LinkContainer>
+                            </Nav>
+                        </Navbar.Collapse>
+                    </Container>
+                </Navbar>
+
+
+
+
+
                 <Row>
                     <Col>
                         <h1>Fall Fashion Trends!</h1>
                     </Col>
                 </Row>
-                <Row>
-                    <Col>
-                        <Link to={`about`}>
-                            <Card>
-                                <Card.Img variant="top" src="\images\adobe orange w16.jpg" />
-                                <Card.Body>
-                                    <Card.Title>Burnt orange</Card.Title>
-                                    <Card.Text>
-                                        Does burnt orange electrifiy your soul?
-                                    </Card.Text>
-                                    Can you step out your comfort zone this fall? Yes or No?
-                                    <Button variant="primary">Go somewhere</Button>
-                                </Card.Body>
-                            </Card>
-                        </Link>
-                        <Link to={`about`}>
-                            <Card>
-                                <Card.Img variant="top" src="\images\ocean blue w16.jpg" />
-                                <Card.Body>
-                                    <Card.Title>Ocean blue</Card.Title>
-                                    <Card.Text>
-                                        Will ocean blue be your signature color this season?
-                                    </Card.Text>
-                                    Do you feel confident in your fashion choices? Yes or No?
-                                    <Button variant="primary">Go somewhere</Button>
-                                </Card.Body>
-                            </Card>
-                        </Link>
-                        <Card>
-                            <Card.Img variant="top" src="\images/romper w16.jpg" />
-                            <Card.Body>
-                                <Card.Title>Daily Yellow</Card.Title>
-                                <Card.Text>
-                                    Which best fits your style bright colors or wild patterns?
-                                </Card.Text>
-                                Will you dare to be your best self this fall? Yes or No?
-                                <Button variant="primary">Go somewhere</Button>
-                            </Card.Body>
-                        </Card>
-                        <Card>
-                            <Card.Img variant="top" src="\images/hs w16 dress.jpg" />
-                            <Card.Body>
-                                <Card.Title>Houndstooth</Card.Title>
-                                <Card.Text>
-                                    Would you prefer houndstooth or plaid?
-                                </Card.Text>
-                                Do you think that your style is a good representation of who you are? Yes or No?
-                                <Button variant="primary">Go somewhere</Button>
-                            </Card.Body>
-                        </Card>
-                    </Col>
-                    <Col>
-                        <Link to={`results`}>
-                            <Card>
-                                <Card.Img variant="top" src="\images\plaid-dress w16.jpg" />
-                                <Card.Body>
-                                    <Card.Title>Plaid</Card.Title>
-                                    <Card.Text>
-                                        Was plaid featured in this years Fall Couture event?
-                                    </Card.Text>
-                                    Does plaid make you feel more trendy? Yes or No?
-                                    <Button variant="primary">Go somewhere</Button>
-                                </Card.Body>
-                            </Card>
-                        </Link>
-                        <Card>
-                            <Card.Img variant="top" src="\images/zebra pants w16.jpg" />
-                            <Card.Body>
-                                <Card.Title>Zebra Print</Card.Title>
-                                <Card.Text>
-                                    Does animal print peak your interest?
-                                </Card.Text>
-                                Will you dare to be bold this fall? Yes or No?
-                                <Button variant="primary">Go somewhere</Button>
-                            </Card.Body>
-                        </Card>
-                        <Card>
-                            <Card.Img variant="top" src="\images/hot pink romp w16.jpg" />
-                            <Card.Body>
-                                <Card.Title>Hot pink</Card.Title>
-                                <Card.Text>
-                                    Do you think bright colors inspire creativity?
-                                </Card.Text>
-                                Is fashion a rendition of nature formatted to fit the human form? Yes or No?
-                                <Button variant="primary">Go somewhere</Button>
-                            </Card.Body>
-                        </Card>
-
-
-
-                    </Col>
-                    <Col>
-                    </Col>
-                </Row>
+                <Outlet />
                 <Row><ol>
                     {items.map((item) => (
                         <li key={item.id} >
