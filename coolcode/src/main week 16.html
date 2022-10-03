@@ -1,0 +1,33 @@
+!DOCTYPE html>
+<html>
+    <head>
+        <title>Fall Fashion trends</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        Fall Fashion Trends 
+    </body>
+</html>
+ 
+<Form>
+    import Form from 'react-bootstrap/Form';
+
+function FormTextExample() {
+  return (
+    <>
+      <Form.Label htmlFor="Yes or not">Result</Form.Label>
+      <Form.Control
+        type="Question"
+        id="inputanswer"
+        aria-describedby="Questionanswer"
+      />
+      <Form.Text id="Questionanswer" muted>
+        Your password must be 8-20 characters long, contain letters and numbers,
+        and must not contain spaces, special characters, or emoji.
+      </Form.Text>
+    </>
+  );
+}
+
+export default FormTextExample;
+</Form>
