@@ -15,9 +15,9 @@ export default function About() {
                     <Card.Body>
                         <Card.Title>Burnt orange</Card.Title>
                         <Card.Text>
-                            Does burnt orange electrifiy your soul?
+                            Burnt Orange is here to electrify your soul
                         </Card.Text>
-                        Can you step out your comfort zone this fall? Yes or No?
+                        Let's step out of our comfort zone this season!
                         <Button variant="primary">Go somewhere</Button>
                     </Card.Body>
                 </Card>

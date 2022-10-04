@@ -1,13 +1,12 @@
-import { Link, Outlet } from "react-router-dom"
+import { Outlet } from "react-router-dom"
 import Row from "react-bootstrap/Row"
-import Card from 'react-bootstrap/Card';
 import Col from "react-bootstrap/Col"
 import Container from "react-bootstrap/Container"
 import Button from "react-bootstrap/Button"
 import React from "react";
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import {LinkContainer} from "react-router-bootstrap"
+import { LinkContainer } from "react-router-bootstrap"
 
 
 
@@ -21,8 +20,31 @@ class App extends React.Component {
 
         this.state = {
             items: [],
+            list: [],
+            newNote: "",
             DataisLoaded: false
         };
+        this.addNote = this.addNote.bind(this);
+        this.editNote = this.editNote.bind(this);
+        this.deleteNote = this.deleteNote.bind(this);
+    }
+    addNote(e) {
+        this.setState({
+            list: [...this.state.list, this.state.newNote],
+            newNote: '',
+        });
+    }
+    editNote(e, index) {
+        this.setState(prevState => {
+            const newList = prevState.list
+            newList[index] = e.target.value
+            return { list: newList }
+        });
+    }
+    deleteNote(index) {
+        this.setState({
+            list: this.state.list.filter((_, i) => i !== index)
+        });
     }
 
     // ComponentDidMount is used to
@@ -60,14 +82,42 @@ class App extends React.Component {
                 </Navbar>
 
 
-
-
-
                 <Row>
                     <Col>
                         <h1>Fall Fashion Trends!</h1>
                     </Col>
                 </Row>
+
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Note</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {this.state.list.map((note, index) => (
+                            <tr key={note + index}>
+                                <td>
+                                    <textarea onBlur={(e) => this.editNote(e, index)} defaultValue={note} />
+                                </td>
+                                <td>
+                                    <Button onClick={(e) => this.deleteNote(index)}>❌</Button>
+                                </td>
+                            </tr>
+                        ))}
+                        <tr>
+                            <td>
+                                <textarea onChange={(e) => this.setState({ newNote: e.target.value })} value={this.state.newNote} />
+                            </td>
+                            <td>
+                                <Button onClick={this.addNote}>Add Note</Button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
                 <Outlet />
                 <Row><ol>
                     {items.map((item) => (
@@ -79,6 +129,8 @@ class App extends React.Component {
                     ))}
                 </ol>
                 </Row>
+
+
 
             </Container>
 
